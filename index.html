@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصدقة الجارية | مشروع الخير السنوي</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="IMAGES/صدقة جارية 26.png">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        'cream': {
+                            '50': '#F9F7F3', 
+                            '100': '#F3EFE9',
+                        },
+                        'dark-green': {
+                            '700': '#004d40', 
+                            '800': '#00382e',
+                        },
+                        'gold': {
+                            '500': '#D4AF37', 
+                            '600': '#C09A2E',
+                        }
+                    },
+                    animation: {
+                        'text-glow': 'text-glow 2.5s ease-in-out infinite alternate',
+                        'subtle-bob': 'subtle-bob 3s ease-in-out infinite',
+                        'box-glow': 'box-glow 2.5s ease-in-out infinite alternate', 
+                        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite', 
+                    },
+                    keyframes: {
+                        'text-glow': {
+                            '0%, 100%': { 
+                                textShadow: '0 0 5px rgba(255, 255, 255, 0.4), 0 0 10px rgba(255, 255, 255, 0.4), 0 0 15px rgba(212, 175, 55, 0.4)' 
+                            },
+                            '50%': { 
+                                textShadow: '0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.8)' 
+                            },
+                        },
+                        'box-glow': { 
+                            '0%, 100%': { 
+                                boxShadow: '0 0 15px 0px rgba(212, 175, 55, 0.3), inset 0 0 10px 0px rgba(212, 175, 55, 0.2)' 
+                            },
+                            '50%': { 
+                                boxShadow: '0 0 25px 5px rgba(212, 175, 55, 0.6), inset 0 0 15px 2px rgba(212, 175, 55, 0.4)' 
+                            },
+                        },
+                        'subtle-bob': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse': {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0.7 },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+   
+</head>
+<body class="bg-cream-50 text-gray-800 antialiased">
+
+    <div id="preloader">
+        <div class="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-4 border-dark-green-700/30 shadow-2xl animate-pulse">
+            <img src="IMAGES/صدقة جارية 26.png" alt="شعار مشروع الخير" class="max-w-[70%] object-contain ">
+        </div>
+    </div>
+
+    <div id="particles-js-global"></div>
+    
+    <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md shadow-lg z-50 transition-all duration-300" data-aos="fade-down">
+        <nav class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 sm:h-20">
+                
+                <a href="#home" class="flex items-center space-x-1 sm:space-x-2 rtl:space-x-reverse flex-shrink-0">
+                    <span class="text-2xl sm:text-3xl">🌿</span>
+                    <span class="text-lg sm:text-2xl font-bold text-dark-green-700 hover:text-gold-600 transition-colors truncate">مشروع الخير</span>
+                </a>
+                <div id="header-hilal" aria-hidden="true">
+                    <div class="pendulum">
+                        <svg viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="goldGrad" x1="0" x2="1">
+                                    <stop offset="0%" class="g-fill-1" />
+                                    <stop offset="100%" class="g-fill-2" />
+                                    <animate attributeName="x1" values="-1; 2; -1" dur="5s" repeatCount="indefinite" />
+                                    <animate attributeName="x2" values="0; 3; 0" dur="5s" repeatCount="indefinite" />
+                                </linearGradient>
+
+                                <pattern id="isos" patternUnits="userSpaceOnUse" width="8" height="8">
+                                    <path d="M0 4 L4 0 L8 4 L4 8 Z" fill="rgba(255,255,255,0.06)" />
+                                </pattern>
+
+                                <mask id="crescentMask">
+                                    <rect width="100%" height="100%" fill="white" />
+                                    <circle cx="72" cy="78" r="36" fill="black" />
+                                </mask>
+                            </defs>
+
+                            <g id="chain" opacity="0.95">
+                                <path d="M 60 8 C 58 20, 62 32, 60 44 L 60 56" 
+                                    fill="none" 
+                                    stroke="#D4AF37" 
+                                    stroke-width="1.5" 
+                                    stroke-linecap="round" 
+                                    stroke-dasharray="1 3" />
+                            </g>
+
+                            <circle cx="60" cy="4" r="4" fill="none" stroke="#D4AF37" stroke-width="1.4" opacity="0.95" />
+
+                            <g transform="translate(0,36)" class="crescent">
+                                <circle cx="60" cy="64" r="44" fill="url(#goldGrad)" mask="url(#crescentMask)" />
+
+                                <circle cx="60" cy="64" r="44" fill="url(#isos)" opacity="0.12" />
+
+                                <path d="M30,64 A34,34 0 0 1 90,64" fill="none" class="pattern-stroke" stroke-linecap="round" />
+
+                                <g class="hanging-star" transform="translate(60, 108)">
+                                    <line y1="0" y2="7" stroke="#D4AF37" stroke-width="1" opacity="0.9" />
+                                    <text y="16" text-anchor="middle" font-size="14" style="fill: #D4AF37; filter: drop-shadow(0 0 4px #F7E8B8) drop-shadow(0 0 2px #D4AF37);">★</text>
+                                
+                                    <animateTransform 
+                                        attributeName="transform" 
+                                        type="rotate" 
+                                        values="8; -8; 8" 
+                                        keyTimes="0; 0.5; 1"
+                                        dur="2.5s" 
+                                        repeatCount="indefinite" 
+                                        additive="sum" 
+                                        calcMode="spline"
+                                        keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
+                                        />
+                                </g>
+                            </g>
+
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 rtl:space-x-reverse">
+                    <a href="#home" class="text-base lg:text-lg font-semibold text-gray-700 hover:text-gold-500 transition-colors">الرئيسية</a>
+                    <a href="#about" class="text-base lg:text-lg font-semibold text-gray-700 hover:text-gold-500 transition-colors">مشروعنا</a>
+                    <a href="#projects" class="text-base lg:text-lg font-semibold text-gray-700 hover:text-gold-500 transition-colors">أعمال سابقة</a>
+                    <a href="#donate" class="text-base lg:text-lg font-semibold text-gray-700 hover:text-gold-500 transition-colors">طرق التبرع</a>
+                </div>
+
+                <a href="#donate" class="hidden md:inline-block bg-gold-500 text-white px-4 lg:px-6 py-2 rounded-full font-bold shadow-md hover:bg-gold-600 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 text-sm lg:text-base">
+                    تبرع الآن
+                </a>
+
+                <button id="mobile-menu-btn" class="md:hidden text-dark-green-700">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-md shadow-xl absolute left-0 right-0 z-40 max-h-screen overflow-y-auto">
+            <a href="#home" class="block px-4 sm:px-6 py-4 text-base sm:text-lg font-semibold text-gray-700 hover:bg-cream-100 transition-colors">الرئيسية</a>
+            <a href="#about" class="block px-4 sm:px-6 py-4 text-base sm:text-lg font-semibold text-gray-700 hover:bg-cream-100 transition-colors">مشروعنا</a>
+            <a href="#projects" class="block px-4 sm:px-6 py-4 text-base sm:text-lg font-semibold text-gray-700 hover:bg-cream-100 transition-colors">أعمال سابقة</a>
+            <a href="#donate" class="block px-4 sm:px-6 py-4 text-base sm:text-lg font-semibold text-gray-700 hover:bg-cream-100 transition-colors">طرق التبرع</a>
+            <div class="px-4 sm:px-6 py-4">
+                <a href="#donate" class="block text-center bg-gold-500 text-white px-6 py-3 rounded-full font-bold shadow-md hover:bg-gold-600 transition-all duration-300">
+                    تبرع الآن
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div id="copy-toast" class="fixed bottom-4 right-4 sm:bottom-10 sm:right-10 bg-dark-green-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-xl z-50 opacity-0 transform translate-y-5 text-sm sm:text-base">
+        تم النسخ بنجاح!
+    </div>
+
+    <main>
+        <section id="home" class="min-h-screen flex items-center justify-center text-center relative pt-20 overflow-hidden px-4 sm:px-6 lg:px-8">
+            <div class="container mx-auto max-w-4xl z-10" data-aos="fade-up" data-aos-duration="1000">
+                <div class="flex justify-center mb-8" data-aos="zoom-in" data-aos-delay="200">
+                    
+                    <div class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-4 border-white/30 shadow-2xl animate-subtle-bob" data-aos="flip-left" data-aos-delay="300">
+                         <img src="IMAGES/صدقة جارية 26.png" alt="شعار مشروع الخير" class="max-w-[70%] object-contain ">
+                    </div>
+                </div>
+                
+                <p class="text-lg sm:text-2xl md:text-3xl font-bold text-gold-600 mb-8 sm:mb-12" data-aos="fade-up" data-aos-delay="400">
+                    مشروع الخير السنوي – دفعة 2003
+                </p>
+                <a href="#about" class="inline-block bg-dark-green-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-bold shadow-xl hover:bg-dark-green-800 hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+                    اكتشف المشروع
+                    <i data-lucide="chevrons-down" class="inline-block w-4 sm:w-5 h-4 sm:h-5 mr-2 animate-bounce"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="py-16 sm:py-24 bg-white shadow-inner">
+            <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+                <div class="flex justify-center mb-6" data-aos="fade-up">
+                    <span class="text-5xl sm:text-6xl">🌿</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-dark-green-700 mb-6 sm:mb-8" data-aos="fade-up" data-aos-delay="100">الصدقة الجارية – مشروع الخير السنوي</h2>
+                
+                <p class="text-lg sm:text-xl md:text-2xl text-gray-700 leading-relaxed mb-6" data-aos="fade-up" data-aos-delay="200">
+                    "مثل الذين ينفقون أموالهم في سبيل الله كمثل حبة أنبتت سبع سنابل، في كل سنبلة مائة حبة" – [البقرة: 261]
+                </p>
+                <p class="text-base sm:text-lg text-gray-600 leading-relaxed mb-6" data-aos="fade-up" data-aos-delay="300">
+                    كل سنة، تتجمع دفعة من طلابنا لعمل صدقة جارية، ليظل أثرهم حيًّا بعدهم.
+                    دفعة 2003، التي تتخرج هذا العام، تكمل المسيرة بنية صادقة، وقررنا أن تكون صدقتنا مساهمة في أجهزة طبية لخدمة المحتاجين.
+                </p>
+                <p class="text-base sm:text-lg text-gray-600 leading-relaxed" data-aos="fade-up" data-aos-delay="400">
+                    نسأل الله أن يجعل هذا العمل خالصًا لوجهه الكريم، وأن يبارك في كل خطوة ترسم بسمة وتخفف حاجة.
+                </p>
+            </div>
+        </section>
+
+        <section id="counter-section" class="py-16 sm:py-24 bg-dark-green-700 text-white relative overflow-hidden">
+            
+            <div id="particles-js-counter"></div>
+            
+            <div class="absolute inset-0 bg-dark-green-800/40 backdrop-blur-sm z-10"></div> 
+            
+            <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center relative z-20" data-aos="zoom-in">
+                <div class="flex justify-center mb-6">
+                    <i data-lucide="heart-handshake" class="w-12 sm:w-16 h-12 sm:h-16 text-gold-500"></i>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-bold text-gold-500 mb-6 sm:mb-8">
+                    تبرعاتكم حتى الآن تبلغ
+                </h3>
+                
+                <div class="flex justify-center items-center mb-6 px-4">
+                    <div class="relative w-56 sm:w-64 md:w-80 lg:w-96 h-56 sm:h-64 md:h-80 lg:h-96 bg-white/10 rounded-full shadow-2xl flex flex-col justify-center items-center backdrop-blur-md border-4 border-gold-500 animate-box-glow"> 
+                        <div id="donation-counter" class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-extrabold text-white mb-2 animate-text-glow" data-target="600">0</div> 
+                        <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-cream-100/90">جنيه مصري</p>
+                    </div>
+                </div>
+
+                <p class="text-lg sm:text-xl md:text-2xl font-semibold mb-8 sm:mb-10 mt-8 sm:mt-12">
+                    هدفنا هذا العام: دعم شراء أجهزة طبية للمرضى المحتاجين
+                </p>
+
+                <blockquote class="text-base sm:text-lg md:text-xl italic text-cream-100 max-w-3xl mx-auto mb-8 sm:mb-12 px-4">
+                    "لن تنالوا البر حتى تنفقوا مما تحبون ۚ وما تنفقوا من شيءٍ فإن الله به عليم"
+                    <cite class="block not-italic text-sm sm:text-base text-gold-500 font-semibold mt-2">[آل عمران: 92]</cite>
+                </blockquote>
+
+                
+                <a href="#donate" class="inline-block bg-gold-500 text-dark-green-800 px-8 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold shadow-xl hover:bg-gold-600 hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+                    شارك في الخير الآن
+                    <i data-lucide="arrow-left" class="inline-block w-5 h-5 mr-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="projects" class="py-16 sm:py-24 bg-cream-50">
+            <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-dark-green-700 mb-4">🌟 الصدقات السابقة</h2>
+                    <p class="text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl mx-auto px-2">
+                        للسنة السابعة على التوالي، الخير مستمر، ودفعة تلو الأخرى، الأثر باقٍ بعدنا:
+                    </p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    
+                    <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl hover:border-gold-500 border-4 border-transparent transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center justify-center w-14 sm:w-16 h-14 sm:h-16 bg-dark-green-700 rounded-full mb-6 text-gold-500">
+                            <i data-lucide="droplet" class="w-6 sm:w-8 h-6 sm:h-8"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-dark-green-700 mb-3">دفعة 97</h3>
+                        <p class="text-base sm:text-lg text-gray-700">وصلات مياه في قرى مصر المحتاجة</p>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl hover:border-gold-500 border-4 border-transparent transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center justify-center w-14 sm:w-16 h-14 sm:h-16 bg-dark-green-700 rounded-full mb-6 text-gold-500">
+                            <i data-lucide="globe-2" class="w-6 sm:w-8 h-6 sm:h-8"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-dark-green-700 mb-3">دفعة 98</h3>
+                        <p class="text-base sm:text-lg text-gray-700">بئر مياه في مناطق أفريقيا الفقيرة</p>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl hover:border-gold-500 border-4 border-transparent transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-center justify-center w-14 sm:w-16 h-14 sm:h-16 bg-dark-green-700 rounded-full mb-6 text-gold-500">
+                            <i data-lucide="home" class="w-6 sm:w-8 h-6 sm:h-8"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-dark-green-700 mb-3">دفعة 99</h3>
+                        <p class="text-base sm:text-lg text-gray-700">تسقيف أسقف منازل</p>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl hover:border-gold-500 border-4 border-transparent transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center justify-center w-14 sm:w-16 h-14 sm:h-16 bg-dark-green-700 rounded-full mb-6 text-gold-500">
+                            <i data-lucide="activity" class="w-6 sm:w-8 h-6 sm:h-8"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-dark-green-700 mb-3">دفعة 2000</h3>
+                        <p class="text-base sm:text-lg text-gray-700">ماكينة غسيل كلوي</p>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl hover:border-gold-500 border-4 border-transparent transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center justify-center w-14 sm:w-16 h-14 sm:h-16 bg-dark-green-700 rounded-full mb-6 text-gold-500">
+                            <i data-lucide="globe-2" class="w-6 sm:w-8 h-6 sm:h-8"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-dark-green-700 mb-3">دفعة 2001</h3>
+                        <p class="text-base sm:text-lg text-gray-700">بئر مياه في أفريقيا الفقيرة</p>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl hover:border-gold-500 border-4 border-transparent transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-center justify-center w-14 sm:w-16 h-14 sm:h-16 bg-dark-green-700 rounded-full mb-6 text-gold-500">
+                            <i data-lucide="home" class="w-6 sm:w-8 h-6 sm:h-8"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-dark-green-700 mb-3">دفعة 2002</h3>
+                        <p class="text-base sm:text-lg text-gray-700">تسقيف منازل</p>
+                    </div>
+                </div>
+
+                <blockquote class="text-center text-base sm:text-lg md:text-xl italic text-gray-700 mt-12 sm:mt-16 max-w-3xl mx-auto border-t border-b border-gold-500 py-6 px-4" data-aos="fade-up">
+                    "والصدقات تطفئ الخطايا كما يطفئ الماء النار"
+                    <cite class="block not-italic text-sm sm:text-base text-dark-green-700 font-semibold mt-2">[رواه الترمذي]</cite>
+                </blockquote>
+            </div>
+        </section>
+
+        <section id="donate" class="py-16 sm:py-24 bg-white shadow-inner">
+            <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-dark-green-700 mb-4">💌 طرق التبرع</h2>
+                    <p class="text-base sm:text-lg md:text-xl text-gray-700 max-w-xl mx-auto">
+                        شاركنا الخير وساعدنا نساعد
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
+                    
+                    <div class="bg-cream-50 p-6 sm:p-8 rounded-2xl shadow-lg text-center overflow-hidden" data-aos="fade-left">
+                        <i data-lucide="smartphone" class="w-14 sm:w-16 h-14 sm:h-16 text-dark-green-700 mx-auto mb-4 sm:mb-6"></i>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-dark-green-700 mb-3 sm:mb-4">أورانج كاش</h3>
+                        <p id="orange-cash" class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 tracking-wider break-all">01288319268</p>
+                        <button onclick="copyToClipboard('01288319268')" class="w-full sm:w-auto bg-dark-green-700 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold hover:bg-dark-green-800 transition-colors shadow-md hover:shadow-lg text-sm sm:text-base">
+                            <i data-lucide="copy" class="inline-block w-4 sm:w-5 h-4 sm:h-5 ml-2"></i>
+                            نسخ الرقم
+                        </button>
+                    </div>
+
+                    <div class="bg-cream-50 p-6 sm:p-8 rounded-2xl shadow-lg text-center overflow-hidden" data-aos="fade-right">
+                        <i data-lucide="banknote" class="w-14 sm:w-16 h-14 sm:h-16 text-dark-green-700 mx-auto mb-4 sm:mb-6"></i>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-dark-green-700 mb-3 sm:mb-4">إنستاباي</h3>
+                        <p id="instapay" class="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 break-all">nourgafar@instapay</p>
+                        <button onclick="copyToClipboard('nourgafar@instapay')" class="w-full sm:w-auto bg-dark-green-700 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold hover:bg-dark-green-800 transition-colors shadow-md hover:shadow-lg text-sm sm:text-base">
+                            <i data-lucide="copy" class="inline-block w-4 sm:w-5 h-4 sm:h-5 ml-2"></i>
+                            نسخ الحساب
+                        </button>
+                    </div>
+                </div>
+
+                <div class="text-center max-w-2xl mx-auto px-4">
+                    <p class="text-base sm:text-lg text-gray-700 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        أو من خلال مسؤولين الصدقة في دفعتك (تواصل معنا عبر رسائل الصفحة وسنوصلك بهم).
+                    </p>
+                    <p class="text-lg sm:text-xl font-bold text-dark-green-700 bg-gold-500/20 p-4 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                        بعد التحويل، أرسلوا لنا سكرين شوت على رسائل الصفحة للتأكيد.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="py-16 sm:py-24 bg-cream-50 text-center">
+            <div class="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8" data-aos="zoom-in-up">
+                <span class="text-5xl sm:text-7xl mb-8 inline-block">🌿</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-dark-green-700 mb-6">خاتمة ورسالة ملهمة</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-800 leading-relaxed mb-6 sm:mb-8">
+                    بسم الله نبدأ مشوار جديد من العطاء، ونسأل الله أن يكون عملنا خالصًا لوجهه الكريم، وأن يجعل هذا المشروع نورًا مستمرًا بعدنا.
+                </p>
+                <p class="text-lg sm:text-xl md:text-2xl font-semibold text-gold-600">
+                    انشر الخير، عرف صحابك، وجمع معانا لتساعدنا نساعد بإذن الله.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark-green-800 text-cream-100 p-6 sm:p-10 text-center">
+        <div class="container mx-auto max-w-6xl px-4">
+            <div class="flex justify-center space-x-4 sm:space-x-6 rtl:space-x-reverse mb-6">
+                <a href="https://www.facebook.com/Sadaqah25" class="text-cream-100 hover:text-gold-500 transition-colors" aria-label="Facebook">
+                    <i data-lucide="facebook" class="w-6 sm:w-8 h-6 sm:h-8"></i>
+                </a>
+                
+            </div>
+            <p class="text-base sm:text-lg font-semibold mb-4">تابعنا على وسائل التواصل لمزيد من الخير 🌿</p>
+            <p class="text-sm sm:text-base text-cream-100/70">
+                © 2025 الصدقة الجارية – جميع الحقوق محفوظة
+            </p>
+        </div>
+    </footer>
+
+    <div id="cookie-banner" class="fixed bottom-0 inset-x-0 bg-dark-green-800/95 backdrop-blur-sm text-cream-100 p-4 sm:p-6 z-50 transform translate-y-full opacity-0 transition-all duration-700 ease-out hidden">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="cookie" class="w-6 h-6 text-gold-500 flex-shrink-0"></i>
+                    <p class="text-sm sm:text-base text-center sm:text-right">
+                        نحن نستخدم ملفات الارتباط لتحسين تجربتك. باستمرارك في تصفح الموقع، فأنت توافق على سياستنا.
+                    </p>
+                </div>
+                <button id="accept-cookies" class="bg-gold-500 text-dark-green-800 px-6 py-2 rounded-full font-bold shadow-md hover:bg-gold-600 transition-colors flex-shrink-0 text-sm sm:text-base">
+                    موافق
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script src="main.js"></script>
+</body>
+</html>

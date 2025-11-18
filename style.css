@@ -1,0 +1,97 @@
+     #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F9F7F3; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; 
+            transition: opacity 3s ease; 
+        }
+        #preloader.fade-out {
+            opacity: 0;
+        }
+
+
+        #particles-js-global {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -10;
+            background-color: #F9F7F3; 
+        }
+
+        #particles-js-counter {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0; 
+        }
+
+        #copy-toast {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        html, body {
+            overflow-x: hidden;
+        }
+
+        .aos-init, .aos-animate {
+            will-change: transform, opacity;
+        }
+
+        #header-hilal {
+            position: absolute;
+            top: 100%; 
+            right: 0.5rem; 
+            transform: translateY(4px); 
+            
+            pointer-events: none;
+            z-index: 60;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        #header-hilal .pendulum {
+            transform-origin: 50% 0%;
+            animation: swing 2.5s ease-in-out infinite; 
+            will-change: transform;
+        }
+
+        #header-hilal .crescent {
+            transform-origin: 50% 40%;
+            will-change: transform, opacity;
+        }
+
+        #header-hilal .hanging-star {
+            transform-origin: 0 0; 
+        }
+
+        @keyframes swing {
+            0%   { transform: rotate(-12deg) translateX(-6px); } 
+            50%  { transform: rotate(12deg) translateX(6px); }  
+            100% { transform: rotate(-12deg) translateX(-6px); }
+        }
+
+        #header-hilal svg { width: 64px; height: auto; display:block; }
+
+        #header-hilal .g-fill-1 { stop-color: #F7E8B8; }
+        #header-hilal .g-fill-2 { stop-color: #D4AF37; }
+        #header-hilal .pattern-stroke { stroke: rgba(0,0,0,0.06); stroke-width: 0.6; }
+
+        @media (prefers-reduced-motion: reduce) {
+            #header-hilal .pendulum { animation: none; }
+        }
+
+        body.mobile-menu-open #header-hilal {
+            z-index: 10; 
+            opacity: 0.95;
+            transform: translateY(6px);
+        }
