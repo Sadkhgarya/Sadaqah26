@@ -1,4 +1,4 @@
-     #preloader {
+    #preloader {
             position: fixed;
             top: 0;
             left: 0;
@@ -59,9 +59,14 @@
             justify-content: center;
         }
 
+        /* --- تعديل حركة الهلال لضمان عملها --- */
         #header-hilal .pendulum {
-            transform-origin: 50% 0%;
-            animation: swing 2.5s ease-in-out infinite; 
+            display: block; /* ضمان العرض ككتلة */
+            transform-origin: 50% 0%; /* نقطة الارتكاز في المنتصف من الأعلى */
+            
+            /* اسم الحركة الجديد hilalSwing لكسر أي كاش */
+            animation: hilalSwing 3s ease-in-out infinite !important; 
+            
             will-change: transform;
         }
 
@@ -74,10 +79,17 @@
             transform-origin: 0 0; 
         }
 
-        @keyframes swing {
-            0%   { transform: rotate(-12deg) translateX(-6px); } 
-            50%  { transform: rotate(12deg) translateX(6px); }  
-            100% { transform: rotate(-12deg) translateX(-6px); }
+        /* تعريف الحركة مع دعم المتصفحات المختلفة */
+        @keyframes hilalSwing {
+            0% { transform: rotate(-45deg); } 
+            50% { transform: rotate(45deg); }  
+            100% { transform: rotate(-45deg); }
+        }
+        
+        @-webkit-keyframes hilalSwing {
+            0% { -webkit-transform: rotate(-45deg); } 
+            50% { -webkit-transform: rotate(45deg); }  
+            100% { -webkit-transform: rotate(-45deg); }
         }
 
         #header-hilal svg { width: 64px; height: auto; display:block; }
@@ -86,12 +98,62 @@
         #header-hilal .g-fill-2 { stop-color: #D4AF37; }
         #header-hilal .pattern-stroke { stroke: rgba(0,0,0,0.06); stroke-width: 0.6; }
 
-        @media (prefers-reduced-motion: reduce) {
-            #header-hilal .pendulum { animation: none; }
-        }
 
         body.mobile-menu-open #header-hilal {
             z-index: 10; 
             opacity: 0.95;
             transform: translateY(6px);
+        }
+        .shiny-btn {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+        }
+        .shiny-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0.04) 100%);
+            transform: translateX(-110%);
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            animation: shimmer 2.8s linear infinite;
+        }
+        @keyframes shimmer { to { transform: translateX(110%); } }
+
+        .shiny-btn.glow {
+            box-shadow: 0 10px 30px rgba(208,165,45,0.16), 0 0 18px rgba(212,175,55,0.10);
+            transition: transform .18s ease, box-shadow .18s ease;
+            margin-bottom:37px;
+        }
+        .shiny-btn.glow:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 18px 40px rgba(208,165,45,0.22), 0 0 28px rgba(212,175,55,0.22);
+        }
+
+        .shiny-btn .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,0));
+            opacity: .0;
+            pointer-events: none;
+            box-shadow: 0 0 8px rgba(255,255,255,0.9);
+            animation: sparkle 1.8s linear infinite;
+        }
+        .shiny-btn .sparkle.s1 { top: 6%; left: 10%; animation-delay: 0s; }
+        .shiny-btn .sparkle.s2 { bottom: 8%; right: 12%; animation-delay: 0.4s; }
+        @keyframes sparkle { 0% { opacity: 0; transform: scale(.6); } 30% { opacity: .95; transform: scale(1.2); } 70% { opacity: .2; transform: scale(.8); } 100% { opacity: 0; transform: scale(.6); } }
+        .shiny-btn { line-height: 1; }
+        .shiny-btn > i, .shiny-btn > svg {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            vertical-align: middle !important;
+            line-height: 1 !important;
+            margin-top: 0 !important;
         }
