@@ -1,4 +1,4 @@
-window.onload = () => {
+      window.onload = () => {
             const preloader = document.getElementById('preloader');
             if (preloader) {
                 preloader.classList.add('fade-out');
@@ -33,8 +33,10 @@ window.onload = () => {
                     mobileMenu.classList.toggle('hidden');
                     if (mobileMenu.classList.contains('hidden')) {
                         menuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+                        document.body.classList.remove('mobile-menu-open');
                     } else {
                         menuBtn.innerHTML = '<i data-lucide="x" class="w-8 h-8"></i>';
+                        document.body.classList.add('mobile-menu-open');
                     }
                     lucide.createIcons(); 
                 });
@@ -43,37 +45,73 @@ window.onload = () => {
                     link.addEventListener('click', () => {
                         mobileMenu.classList.add('hidden');
                         menuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+                        document.body.classList.remove('mobile-menu-open');
                         lucide.createIcons();
                     });
                 });
             }
 
+            // MODIFIED COUNTER LOGIC
             const counterElement = document.getElementById('donation-counter');
-            
-            if (counterElement) {
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+
+            if (counterElement && progressBar && progressText) {
                 const animateCounter = (el) => {
-                    const target = parseInt(el.dataset.target, 10);
-                    const duration = 2500; 
-                    let current = 0;
-                    const stepTime = 20; 
+                    // Get Achieved amount and Goal from data attributes
+                    const achieved = parseInt(el.dataset.achieved, 10);
+                    const goal = parseInt(el.dataset.goal, 10);
+                    
+                    // Calculate target percentage, capped at 100%
+                    const percentTarget = Math.min(100, Math.round((achieved / goal) * 100)); 
+                    
+                    const duration = 2500; // Animation duration
+                    let currentPercent = 0;
+                    const stepTime = 20; // Time interval for each step
                     const steps = duration / stepTime;
-                    const increment = target / steps;
+                    const increment = percentTarget / steps;
+
+                    const supportMessage = 'نحتاج المزيد من الدعم';
+                    const goalAchievedMessage = 'تم تحقيق الهدف بفضل الله!';
                     
                     const updateCounter = () => {
-                        current += increment;
-                        let displayValue = Math.round(current);
+                        currentPercent += increment;
+                        let displayValue = Math.round(currentPercent);
 
-                        if (current >= target) {
-                            current = target;
-                            displayValue = target;
+                        if (currentPercent >= percentTarget) {
+                            currentPercent = percentTarget;
+                            displayValue = percentTarget;
                         }
 
-                        el.innerText = displayValue.toLocaleString('ar-EG'); 
+                        // Use Arabic locale for number formatting (only needed for internal calculation, not displayed)
+                        // const achievedDisplay = Math.round(currentPercent * goal / 100).toLocaleString('ar-EG'); 
+                        
+                        // Determine the message
+                        const message = displayValue >= 100 ? goalAchievedMessage : supportMessage;
 
-                        if (current < target) {
+                        // Update counter text with %
+                        el.innerText = `${displayValue}%`; 
+                        
+                        // Update progress bar width
+                        progressBar.style.width = `${displayValue}%`;
+
+                        // Update progress text with only percentage and message (no absolute numbers)
+                        progressText.innerHTML = `
+                            <span>${displayValue}%</span>
+                            <span>${message}</span>
+                        `;
+                        
+                        if (currentPercent < percentTarget) {
                             requestAnimationFrame(updateCounter);
                         } else {
-                            el.innerText = target.toLocaleString('ar-EG');
+                            // Ensure final value is exactly the target percentage
+                            const finalMessage = percentTarget >= 100 ? goalAchievedMessage : supportMessage;
+                            el.innerText = `${percentTarget}%`; 
+                            progressBar.style.width = `${percentTarget}%`;
+                             progressText.innerHTML = `
+                                <span>${percentTarget}%</span>
+                                <span>${finalMessage}</span>
+                            `;
                         }
                     };
                     updateCounter();
@@ -90,6 +128,7 @@ window.onload = () => {
                 
                 observer.observe(counterElement);
             }
+            // END MODIFIED COUNTER LOGIC
 
             try {
                 particlesJS('particles-js-global', {
@@ -298,6 +337,25 @@ window.onload = () => {
                 });
             }
 
+            // Lightbox / Image Modal Logic
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            const galleryItems = document.querySelectorAll('.gallery-item img');
+
+            if (modal && modalImg && galleryItems.length > 0) {
+                galleryItems.forEach(img => {
+                    img.addEventListener('click', () => {
+                        modalImg.src = img.src;
+                        modal.classList.remove('hidden');
+                        setTimeout(() => {
+                            modal.classList.remove('opacity-0');
+                            modalImg.classList.remove('scale-90');
+                            modalImg.classList.add('scale-100');
+                        }, 10);
+                    });
+                });
+            }
+
             try {
                 lucide.createIcons();
             } catch (e) {
@@ -335,4 +393,16 @@ window.onload = () => {
                 }, 2000); 
             }
         }
-        
+
+        function closeImageModal() {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            if(modal && modalImg) {
+                modal.classList.add('opacity-0');
+                modalImg.classList.remove('scale-100');
+                modalImg.classList.add('scale-90');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+        }
