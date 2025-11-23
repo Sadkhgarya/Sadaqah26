@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسؤولو الصدقة الجارية | مشروع الخير</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="IMAGES/صدقة جارية 26.png"> 
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --color-cream-50: #F9F7F3;
+            --color-dark-green-700: #004d40;
+            --color-dark-green-800: #00382e;
+            --color-gold-500: #D4AF37;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--color-cream-50);
+            text-align: right;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-cream-50);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-gold-500);
+            border-radius: 4px;
+        }
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        'cream': {
+                            '50': '#F9F7F3', 
+                            '100': '#F3EFE9',
+                        },
+                        'dark-green': {
+                            '700': '#004d40', 
+                            '800': '#00382e',
+                        },
+                        'gold': {
+                            '500': '#D4AF37', 
+                            '600': '#C09A2E',
+                        }
+                    },
+                    boxShadow: {
+                        /* Enhanced gold shadow for hover effect */
+                        'card-hover': '0 10px 20px -5px rgba(0, 0, 0, 0.2), 0 0 0 5px var(--color-gold-500)',
+                        'filter-shadow': '0 5px 15px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="copy-toast" class="fixed bottom-4 right-4 sm:bottom-10 sm:right-10 bg-dark-green-800 text-white px-6 py-3 rounded-full shadow-2xl z-50 opacity-0 transform translate-y-5 transition-all duration-300 ease-in-out text-sm sm:text-base font-semibold hidden">
+        تم النسخ
+    </div>
+
+    <!-- Header / Navigation Bar (Simplified) -->
+    <header class="sticky top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-md z-50">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 sm:h-20">
+                <a href="#" class="flex items-center space-x-1 sm:space-x-2 rtl:space-x-reverse flex-shrink-0">
+                    <span class="text-2xl sm:text-3xl text-dark-green-700">🌱</span>
+                    <span class="text-lg sm:text-2xl font-bold text-dark-green-700">مسؤولو الصدقة</span>
+                </a>
+                <a href="index.html" class="bg-gold-500 text-dark-green-800 px-4 py-2 rounded-lg font-semibold hover:bg-gold-600 transition-colors text-sm sm:text-base shadow-lg">
+                    العودة للرئيسية
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-12 sm:py-20">
+        <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+            <div id="hero-title-section" class="text-center mb-10 sm:mb-16 bg-dark-green-700 p-8 rounded-3xl shadow-2xl">
+                <i data-lucide="hand-heart" class="w-12 h-12 sm:w-16 sm:h-16 text-gold-500 mx-auto mb-4"></i>
+                <h1 class="text-3xl sm:text-5xl font-extrabold mb-3 text-gold-500">مسؤولو الصدقة الجارية</h1>
+                <p class="text-lg sm:text-xl max-w-3xl mx-auto text-black">
+                    تواصل مع المسؤول عن الصدقة في تخصصك أو فرقتك للمساهمة في مشروع الخير.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-filter-shadow mb-10 border-b-4 border-dark-green-700">
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-green-700 mb-6 flex items-center">
+                    <i data-lucide="filter" class="w-7 h-7 ml-2 text-gold-500"></i>
+                    فلترة وبحث
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                    
+                    <div>
+                        <label for="search-input" class="block text-sm font-medium text-gray-700 mb-2">البحث العام (بالاسم أو الهاتف)</label>
+                        <div class="relative">
+                            <input type="text" id="search-input" placeholder="ابحث هنا..." 
+                                   class="w-full p-3 pl-10 bg-cream-50 border-2 border-gray-300 rounded-xl focus:border-gold-500 focus:ring focus:ring-gold-500/50 transition duration-200"
+                                   onkeyup="filterAgents()" onchange="filterAgents()">
+                            <i data-lucide="search" class="w-5 h-5 absolute top-1/2 right-3 transform -translate-y-1/2 text-dark-green-700/60"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="major-filter" class="block text-sm font-medium text-gray-700 mb-2">التخصص</label>
+                        <select id="major-filter" onchange="filterAgents()"
+                                class="w-full p-3 bg-cream-50 border-2 border-gray-300 rounded-xl text-gray-700 appearance-none focus:border-gold-500 focus:ring focus:ring-gold-500/50 transition duration-200">
+                            <option value="">كل التخصصات</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="w-4 h-4 absolute top-1/2 left-3 transform -translate-y-1/2 pointer-events-none text-gray-400"></i>
+                    </div>
+
+                    <!-- Level Filter -->
+                    <div>
+                        <label for="level-filter" class="block text-sm font-medium text-gray-700 mb-2">الفرقة/المستوى</label>
+                        <select id="level-filter" onchange="filterAgents()"
+                                class="w-full p-3 bg-cream-50 border-2 border-gray-300 rounded-xl text-gray-700 appearance-none focus:border-gold-500 focus:ring focus:ring-gold-500/50 transition duration-200">
+                            <option value="">كل المستويات</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="w-4 h-4 absolute top-1/2 left-3 transform -translate-y-1/2 pointer-events-none text-gray-400"></i>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="agents-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+            </div>
+
+            <div id="no-results" class="hidden text-center bg-cream-100 p-8 rounded-xl shadow-inner mt-10">
+                <i data-lucide="frown" class="w-12 h-12 text-dark-green-700 mx-auto mb-4"></i>
+                <h3 class="text-2xl font-bold text-dark-green-700">لا توجد نتائج مطابقة</h3>
+                <p class="text-gray-600">يرجى تعديل خيارات البحث أو الفلترة والمحاولة مرة أخرى.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-green-800 text-cream-100 p-6 text-center">
+        <p class="text-sm sm:text-base">
+            تم تصميم هذه الصفحة بواسطة الصدقة الجارية &copy; 2025
+        </p>
+    </footer>
+
+    <script>
+        // Data provided by the user (مسؤولي الصدقة)
+        const agentsData = [
+            { "الاسم": "حلا القاضي", "رقم_الهاتف": "01556334499", "التخصص": "غير محدد", "الفرقة_المستوى": "اعدادي" },
+            { "الاسم": "ابراهيم عبية", "رقم_الهاتف": "01101695065", "التخصص": "كهربا باور", "الفرقة_المستوى": "1" },
+            { "الاسم": "ياسمين الباز", "رقم_الهاتف": "01098965044", "التخصص": "كهربا باور", "الفرقة_المستوى": "1" },
+            { "الاسم": "احمد الشامي", "رقم_الهاتف": "01279359351", "التخصص": "كهربا باور", "الفرقة_المستوى": "2" },
+            { "الاسم": "جهاد سعد", "رقم_الهاتف": "01501700461", "التخصص": "كهربا باور", "الفرقة_المستوى": "2" },
+            { "الاسم": "عمرو محمود", "رقم_الهاتف": "01060809225", "التخصص": "كهربا باور", "الفرقة_المستوى": "3" },
+            { "الاسم": "محمد نصير", "رقم_الهاتف": "01030307728", "التخصص": "كهربا باور", "الفرقة_المستوى": "4" },
+            { "الاسم": "عبد الرحمن شرف", "رقم_الهاتف": "01008382951", "التخصص": "حاسبات", "الفرقة_المستوى": "1" },
+            { "الاسم": "محمود الشوبري", "رقم_الهاتف": "01222318002", "التخصص": "حاسبات", "الفرقة_المستوى": "2" },
+            { "الاسم": "مازن شاهين", "رقم_الهاتف": "01018084879", "التخصص": "حاسبات", "الفرقة_المستوى": "3" },
+            { "الاسم": "عيد شيبة", "رقم_الهاتف": "01275263562", "التخصص": "حاسبات", "الفرقة_المستوى": "قديمة 3" },
+            { "الاسم": "محمد مطر", "رقم_الهاتف": "01013081008", "التخصص": "حاسبات", "الفرقة_المستوى": "4" },
+            { "الاسم": "خالد التراس", "رقم_الهاتف": "01154909094", "التخصص": "اتصالات", "الفرقة_المستوى": "1" },
+            { "الاسم": "سلمي الديب", "رقم_الهاتف": "01551598879", "التخصص": "اتصالات", "الفرقة_المستوى": "1" },
+            { "الاسم": "يارا عادل", "اكونت_الفيسبوك": "https://www.facebook.com/share/17daYDg1d2/", "التخصص": "اتصالات", "الفرقة_المستوى": "2" }, 
+            { "الاسم": "محمد جمعة", "رقم_الهاتف": "01028226973", "التخصص": "اتصالات", "الفرقة_المستوى": "3" },
+            { "الاسم": "طارق حسن", "رقم_الهاتف": "01093380870", "التخصص": "اتصالات", "الفرقة_المستوى": "قديمة 3" },
+            { "الاسم": "محمد الخولي", "رقم_الهاتف": "01016335734", "التخصص": "اتصالات", "الفرقة_المستوى": "4" },
+            { "الاسم": "علي الخولي", "رقم_الهاتف": "01224268978", "التخصص": "مدني", "الفرقة_المستوى": "1" },
+            { "الاسم": "رحمة محمد", "رقم_الهاتف": "01205406247", "التخصص": "مدني", "الفرقة_المستوى": "1" },
+            { "الاسم": "فارس شفيق", "رقم_الهاتف": "01033996432", "التخصص": "مدني", "الفرقة_المستوى": "2" },
+            { "الاسم": "هشام الكوش", "رقم_الهاتف": "01143375388", "التخصص": "مدني", "الفرقة_المستوى": "3" },
+            { "الاسم": "سلمي القط", "رقم_الهاتف": "01552423363", "التخصص": "مدني", "الفرقة_المستوى": "3" },
+            { "الاسم": "احمد فرارة", "رقم_الهاتف": "01558476990", "التخصص": "مدني", "الفرقة_المستوى": "قديمة 3" },
+            { "الاسم": "هاشم الفقي", "رقم_الهاتف": "01208366077", "التخصص": "مدني عام", "الفرقة_المستوى": "4" },
+            { "الاسم": "احمد فتحي", "رقم_الهاتف": "01150322960", "التخصص": "انشاءات", "الفرقة_المستوى": "4" },
+            { "الاسم": "فاطمة محمد", "رقم_الهاتف": "01007390378", "التخصص": "عمارة", "الفرقة_المستوى": "1" },
+            { "الاسم": "شاكر عمار", "رقم_الهاتف": "01030256627", "التخصص": "عمارة", "الفرقة_المستوى": "2" },
+            { "الاسم": "بدر رضا", "رقم_الهاتف": "01224173282", "التخصص": "عمارة", "الفرقة_المستوى": "3" },
+            { "الاسم": "ريم الطباخ", "رقم_الهاتف": "01554362703", "التخصص": "عمارة", "الفرقة_المستوى": "3" },
+            { "الاسم": "رولا خالد", "رقم_الهاتف": "01119003179", "التخصص": "عمارة", "الفرقة_المستوى": "4" },
+            { "الاسم": "ياسر حشاد", "رقم_الهاتف": "01208712237", "التخصص": "ميكا باور", "الفرقة_المستوى": "1" },
+            { "الاسم": "سالي محمد", "رقم_الهاتف": "01097625671", "التخصص": "ميكا باور", "الفرقة_المستوى": "1" },
+            { "الاسم": "محمد الديب", "رقم_الهاتف": "01276689889", "التخصص": "ميكا باور", "الفرقة_المستوى": "2" },
+            { "الاسم": "يوسف خالد ابو زيد", "رقم_الهاتف": "01004498423", "التخصص": "ميكا باور", "الفرقة_المستوى": "3" },
+            { "الاسم": "محمد عسكر", "رقم_الهاتف": "01551441061", "التخصص": "ميكا باور", "الفرقة_المستوى": "قديمة 3" },
+            { "الاسم": "محمد عقرب", "رقم_الهاتف": "01028510619", "التخصص": "ميكا باور", "الفرقة_المستوى": "4" },
+            { "الاسم": "مازن امجد", "رقم_الهاتف": "01033629202", "التخصص": "انتاج", "الفرقة_المستوى": "1" },
+            { "الاسم": "مريم كناني", "رقم_الهاتف": "01032913635", "التخصص": "انتاج", "الفرقة_المستوى": "2" },
+            { "الاسم": "احمد امين", "رقم_الهاتف": "01117647151", "التخصص": "انتاج", "الفرقة_المستوى": "3" },
+            { "الاسم": "محمد شعبان", "رقم_الهاتف": "01062045066", "التخصص": "انتاج", "الفرقة_المستوى": "قديمة 3" },
+            { "الاسم": "طه فايد", "رقم_الهاتف": "01009123192", "التخصص": "انتاج", "الفرقة_المستوى": "4" },
+            { "الاسم": "دارين الشيخ", "رقم_الهاتف": "01558654057", "التخصص": "تخطيط", "الفرقة_المستوى": "2" },
+            { "الاسم": "حسن سليمان", "رقم_الهاتف": "01144172426", "التخصص": "كيمياء", "الفرقة_المستوى": "1" },
+            { "الاسم": "رودينة النبراوي", "اكونت_الفيسبوك": "https://www.facebook.com/share/1CdSa6quLS/", "التخصص": "كيمياء", "الفرقة_المستوى": "2" },
+            { "الاسم": "مريم الخولي", "رقم_الهاتف": "01011275824", "التخصص": "طبية", "الفرقة_المستوى": "2" },
+            { "الاسم": "احمد ماجد", "رقم_الهاتف": "01094293403", "التخصص": "طبية", "الفرقة_المستوى": "3" },
+            { "الاسم": "يوسف طلبة", "رقم_الهاتف": "01281939344", "التخصص": "ذكاء", "الفرقة_المستوى": "1" },
+            { "الاسم": "سلمي محمد", "رقم_الهاتف": "01110067031", "التخصص": "ذكاء", "الفرقة_المستوى": "1" },
+            { "الاسم": "اسراء علاء", "رقم_الهاتف": "01069804106", "التخصص": "ذكاء", "الفرقة_المستوى": "3" },
+            { "الاسم": "محمد هاني", "رقم_الهاتف": "01062658457", "التخصص": "ميكاترونكس", "الفرقة_المستوى": "1" },
+            { "الاسم": "عمر وليد", "رقم_الهاتف": "01025092916", "التخصص": "ميكاترونكس", "الفرقة_المستوى": "2" },
+            { "الاسم": "فادي ماهر", "رقم_الهاتف": "01205382636", "التخصص": "ميكاترونكس", "الفرقة_المستوى": "4" },
+            { "الاسم": "يوسف البهوتي", "رقم_الهاتف": "01224841877", "التخصص": "طاقة متجددة", "الفرقة_المستوى": "1" },
+            { "الاسم": "احمد ياسر", "رقم_الهاتف": "01066396561", "التخصص": "الوافدين", "الفرقة_المستوى": "غير محدد" },
+            { "الاسم": "جميلة عاطف", "رقم_الهاتف": "01123972623", "التخصص": "الوافدين", "الفرقة_المستوى": "غير محدد" }
+        ];
+
+        let toastTimeout; 
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            populateFilters();
+            filterAgents();
+        });
+
+        function populateFilters() {
+            const majors = [...new Set(agentsData.map(agent => agent.التخصص))].sort((a, b) => a.localeCompare(b, 'ar'));
+            const levels = [...new Set(agentsData.map(agent => agent.الفرقة_المستوى))].sort((a, b) => {
+                const order = ['اعدادي', '1', '2', 'قديمة 3', '3', '4', 'غير محدد'];
+                const indexA = order.indexOf(a);
+                const indexB = order.indexOf(b);
+                if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+                if (indexA !== -1) return -1;
+                if (indexB !== -1) return 1;
+                return a.localeCompare(b, 'ar');
+            });
+
+            const majorFilter = document.getElementById('major-filter');
+            const levelFilter = document.getElementById('level-filter');
+
+            majors.forEach(major => {
+                const option = document.createElement('option');
+                option.value = major;
+                option.textContent = major;
+                majorFilter.appendChild(option);
+            });
+
+            levels.forEach(level => {
+                const option = document.createElement('option');
+                option.value = level;
+                option.textContent = level;
+                levelFilter.appendChild(option);
+            });
+        }
+
+        function filterAgents() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase().trim();
+            const selectedMajor = document.getElementById('major-filter').value;
+            const selectedLevel = document.getElementById('level-filter').value;
+            const agentsList = document.getElementById('agents-list');
+            const noResults = document.getElementById('no-results');
+            const heroSection = document.getElementById('hero-title-section'); // New reference
+
+            const filteredAgents = agentsData.filter(agent => {
+                // 1. Filter by Major
+                const majorMatch = !selectedMajor || agent.التخصص === selectedMajor;
+
+                // 2. Filter by Level
+                const levelMatch = !selectedLevel || agent.الفرقة_المستوى === selectedLevel;
+
+                // 3. Filter by Search (Name, Phone, or Facebook Account if present)
+                const searchMatch = !searchInput || 
+                                    agent.الاسم.toLowerCase().includes(searchInput) ||
+                                    (agent.رقم_الهاتف && agent.رقم_الهاتف.includes(searchInput)) ||
+                                    (agent.اكونت_الفيسبوك && agent.اكونت_الفيسبوك.toLowerCase().includes(searchInput));
+
+                return majorMatch && levelMatch && searchMatch;
+            });
+            
+            if (searchInput || selectedMajor || selectedLevel) {
+                heroSection.classList.add('hidden');
+            } else {
+                heroSection.classList.remove('hidden');
+            }
+
+            // Render the results
+            agentsList.innerHTML = '';
+            if (filteredAgents.length > 0) {
+                filteredAgents.forEach(agent => {
+                    agentsList.innerHTML += createAgentCard(agent);
+                });
+                agentsList.classList.remove('hidden');
+                noResults.classList.add('hidden');
+            } else {
+                agentsList.classList.add('hidden');
+                noResults.classList.remove('hidden');
+            }
+
+            lucide.createIcons();
+        }
+
+        function createAgentCard(agent) {
+            const isPhone = !!agent.رقم_الهاتف;
+            
+            const facebookUrl = agent.اكونت_الفيسبوك || '';
+            const isFacebookUrlValid = facebookUrl.startsWith('http://') || facebookUrl.startsWith('https://');
+
+            const contactInfo = isPhone 
+                ? { type: 'phone', value: agent.رقم_الهاتف, display: agent.رقم_الهاتف, icon: 'copy', actionText: 'اضغط للنسخ' }
+                : { 
+                    type: 'facebook', 
+                    value: isFacebookUrlValid ? facebookUrl : 'https://www.facebook.com/', // Fallback to main Facebook page if URL is invalid
+                    display: 'صفحة فيسبوك', 
+                    icon: 'facebook', 
+                    actionText: 'تواصل الآن عبر فيسبوك' 
+                };
+
+            return `
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-gray-100 hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-center mb-4 border-b pb-4 border-gray-100">
+                        <i data-lucide="user-circle-2" class="w-10 h-10 text-dark-green-700 flex-shrink-0 ml-3"></i>
+                        <h3 class="text-xl sm:text-2xl font-bold text-dark-green-700">${agent.الاسم}</h3>
+                    </div>
+
+                    <div class="space-y-3 mb-5 text-gray-700">
+                        <div class="flex items-center text-base sm:text-lg">
+                            <i data-lucide="briefcase" class="w-5 h-5 text-gold-500 ml-2 flex-shrink-0"></i>
+                            <span class="font-semibold ml-1">التخصص:</span>
+                            <span class="font-medium text-dark-green-700">${agent.التخصص}</span>
+                        </div>
+                        <div class="flex items-center text-base sm:text-lg">
+                            <i data-lucide="graduation-cap" class="w-5 h-5 text-gold-500 ml-2 flex-shrink-0"></i>
+                            <span class="font-semibold ml-1">المستوى:</span>
+                            <span class="font-medium text-dark-green-700">${agent.الفرقة_المستوى}</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        ${isPhone ? `
+                            <div class="bg-cream-100/70 p-4 rounded-lg flex flex-col items-center justify-center border-2 border-gold-500/30 space-y-3">
+                                <!-- الرقم فوق زر النسخ مباشرة -->
+                                <span dir="ltr" class="font-mono text-xl sm:text-2xl tracking-widest text-dark-green-700 whitespace-nowrap overflow-hidden">${contactInfo.display}</span>
+                                
+                                <button onclick="copyToClipboard(this, '${contactInfo.value}')" 
+                                        class="w-full bg-gold-500 text-dark-green-800 px-4 py-2 rounded-full font-semibold text-base hover:bg-gold-600 transition-colors shadow-md flex items-center justify-center transform hover:scale-[1.02]">
+                                    <i data-lucide="${contactInfo.icon}" class="w-5 h-5 ml-2"></i>
+                                    <span>نسخ الرقم</span>
+                                </button>
+                            </div>
+                        ` : `
+                            <div class="bg-cream-100/70 p-3 rounded-lg flex flex-col items-center border-2 border-gold-500/30 text-sm font-medium text-gray-700 mb-3">
+                                <span>يتم استخدام رابط فيسبوك لعدم توفر رقم هاتف.</span>
+                            </div>
+                            <a href="${contactInfo.value}" target="_blank" rel="noopener noreferrer"
+                               class="block text-center bg-dark-green-700 text-gold-500 px-4 py-3 rounded-full font-bold text-base hover:bg-dark-green-800 transition-colors shadow-lg transform hover:scale-[1.02] flex items-center justify-center border-2 border-gold-500">
+                                <i data-lucide="${contactInfo.icon}" class="w-5 h-5 ml-2"></i>
+                                ${contactInfo.actionText}
+                            </a>
+                        `}
+                    </div>
+                </div>
+            `;
+        }
+
+        
+        function copyToClipboard(btnOrText, maybeText) {
+            let button = null;
+            let text = '';
+            if (typeof btnOrText === 'string') {
+                text = btnOrText;
+            } else {
+                button = btnOrText; // the button element
+                text = maybeText || '';
+            }
+
+            const el = document.createElement('textarea');
+            el.value = text;
+            el.setAttribute('readonly', '');
+            el.style.position = 'absolute';
+            el.style.left = '-9999px';
+            document.body.appendChild(el);
+            el.select();
+            try {
+                document.execCommand('copy');
+                showCopyToast(); 
+
+                if (button) {
+                    if (!button.dataset._origHtml) button.dataset._origHtml = button.innerHTML;
+                    button.innerHTML = '<span>تم النسخ</span>';
+                    button.disabled = true;
+                    setTimeout(() => {
+                        if (button.dataset._origHtml) button.innerHTML = button.dataset._origHtml;
+                        button.disabled = false;
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+            document.body.removeChild(el);
+        }
+
+        function showCopyToast() {
+            const toast = document.getElementById('copy-toast');
+            if (toast) {
+                if (toastTimeout) {
+                    clearTimeout(toastTimeout);
+                }
+
+
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-5', 'hidden'); 
+
+                void toast.offsetWidth; 
+                
+                toast.classList.remove('hidden');
+
+                setTimeout(() => {
+                    toast.classList.remove('opacity-0', 'translate-y-5');
+                    toast.classList.add('opacity-100', 'translate-y-0');
+                }, 10); 
+
+                toastTimeout = setTimeout(() => {
+                    toast.classList.remove('opacity-100', 'translate-y-0');
+                    toast.classList.add('opacity-0', 'translate-y-5');
+                }, 2500);
+            }
+        }
+    </script>
+</body>
+</html>
